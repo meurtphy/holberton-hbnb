@@ -1,39 +1,54 @@
-diagramme de paquetage qui représente l’architecture en trois couches de l’application HBnB Evolution, en intégrant le patron de conception Façade pour gérer les interactions entre ces couche
-
-
-🚀 Étapes à suivre :
 1️⃣ Comprendre l’architecture en trois couches
-L’application suit une architecture multi-couches pour bien séparer les responsabilités :
+L'application HBnB suit une architecture en couches, ce qui signifie que le code est organisé en plusieurs niveaux distincts, chacun ayant une responsabilité spécifique.
 
-Couche Présentation (Presentation Layer) :
-Contient les API et Services qui permettent aux utilisateurs d'interagir avec l'application.
-Exemples : UserService, PlaceService, ReviewService
-Couche Métier (Business Logic Layer) :
-Gère la logique métier et les modèles des entités (User, Place, Review, Amenity).
-C’est ici que les règles de validation et de gestion des objets sont appliquées.
-Couche de Persistance (Persistence Layer) :
-Responsable de la gestion des données (base de données, requêtes).
-Utilise des DAO (Data Access Objects) ou Repositories pour interagir avec la base.
+Présentation (Presentation Layer) : C'est l’interface avec l'utilisateur, via les services et les API.
+Logique métier (Business Logic Layer) : Contient les modèles et les règles métier (ex. : gestion des utilisateurs, des lieux, des avis…).
+Persistance (Persistence Layer) : Responsable du stockage et de l’accès aux données via une base de données.
+La Facade Pattern est utilisée pour simplifier la communication entre ces couches.
 
 
-2️⃣ les composants clés
-Vous devez représenter les trois couches et leurs composants principaux :
 
-✅ Couche Présentation (Presentation Layer) :
-UserService
-PlaceService
-ReviewService
-AmenityService
-API Controller
-✅ Couche Métier (Business Logic Layer) :
-User
-Place
-Review
-Amenity
-Facade (interface entre la Présentation et la Persistance)
-✅ Couche de Persistance (Persistence Layer) :
-UserDAO
-PlaceDAO
-ReviewDAO
-AmenityDAO
-Database
+
+2️⃣ Représenter ces couches dans un diagramme de packages UML
+Le diagramme de packages sert à visualiser les différentes parties de l’application et leurs relations.
+///////////////
+image
+////////////////////
+
+
+3️⃣ Détails de chaque couche
+Presentation Layer (Couche Présentation)
+📌 Contient l’API et les services exposés aux utilisateurs.
+🔹 Exemples : Flask API, REST API, GraphQL.
+
+Business Logic Layer (Couche Logique Métier)
+📌 Contient les classes métiers qui gèrent les entités et la logique du programme.
+🔹 Exemples : User, Place, Review, Amenity.
+
+Persistence Layer (Couche de Persistance)
+📌 Gère la communication avec la base de données.
+🔹 Exemples : SQLAlchemy, DatabaseAccess.
+
+4️⃣ Explication du modèle Facade
+Le modèle de conception Facade est utilisé ici pour simplifier l’accès aux différentes couches :
+
+La Présentation ne communique pas directement avec la Persistance.
+Tout passe par la Logique Métier, qui fait office d’interface unique (Facade).
+Pourquoi utiliser Facade ? ✅ Encapsulation : Cache la complexité interne.
+✅ Simplicité : Fournit une interface unique pour chaque couche.
+✅ Maintenance facile : Permet de modifier une couche sans impacter directement les autres.
+
+
+
+
+
+
+
+Explication du modèle Facade
+Le modèle de conception Facade est utilisé ici pour simplifier l’accès aux différentes couches :
+
+La Présentation ne communique pas directement avec la Persistance.
+Tout passe par la Logique Métier, qui fait office d’interface unique (Facade).
+Pourquoi utiliser Facade ? ✅ Encapsulation : Cache la complexité interne.
+✅ Simplicité : Fournit une interface unique pour chaque couche.
+✅ Maintenance facile : Permet de modifier une couche sans impacter directement les autres.
