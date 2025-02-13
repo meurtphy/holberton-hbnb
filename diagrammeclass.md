@@ -89,4 +89,7 @@ Liste des équipements disponibles dans un lieu.
 - **Place** ➝ Reçoit plusieurs **Review** (`1 - 0..*`)
 - **Place** ➝ A plusieurs **Amenity** (`1 - 0..*`)
 
+[Diagramme sans nom.drawio (4).pdf](https://github.com/user-attachments/files/18780702/Diagramme.sans.nom.drawio.4.pdf)
+
+
 ---
