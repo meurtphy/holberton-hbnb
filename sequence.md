@@ -48,6 +48,7 @@ L'API transmet au PlaceService.
 Le PlaceService vérifie la validité des données.
 Le PlaceRepository insère les données.
 La réponse est renvoyée au Client.
+![DiagrammePlace Creation drawio](https://github.com/user-attachments/assets/29e9a5dc-cfef-4ed6-adb4-d9e1ca8b43d2)
 
 
 ✍️ 3️⃣ Soumission d'un avis (Review Submission)
@@ -68,6 +69,11 @@ Le ReviewService vérifie la cohérence des données.
 Le ReviewRepository enregistre l'avis.
 La réponse est renvoyée au Client.
 
+![DiagrammeReview Submission drawio](https://github.com/user-attachments/assets/3316566e-3399-4306-9985-a01c01fc5e9f)
+
+
+
+
 🔍 4️⃣ Récupération d'une liste de lieux (Fetching Places)
 📑 Description :
 Un utilisateur souhaite afficher les lieux correspondant à certains critères.
@@ -85,6 +91,7 @@ L'API transmet au PlaceService.
 Le PlaceService interroge le PlaceRepository.
 Le PlaceRepository retourne la liste.
 L'API envoie la réponse au Client.
+![DiagrammeFetching a List of Places drawio](https://github.com/user-attachments/assets/6c776751-6dc0-407f-ad70-5a59875a8f7d)
 
 
 🧠 Points Clés
