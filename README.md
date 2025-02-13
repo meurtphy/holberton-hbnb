@@ -15,6 +15,11 @@ Le **diagramme de paquetage** est un type de diagramme UML structurel qui organi
 - **<<import>>** : Un paquetage **importe** un autre et peut utiliser ses éléments sans qualification.
 - **<<access>>** : Un paquetage **accède** à certaines fonctionnalités d’un autre sans l’importer entièrement.
 
+
+
+[diagramme de packages UML(1).pdf](https://github.com/user-attachments/files/18780036/diagramme.de.packages.UML.1.pdf)
+
+
 ## 🛠️ Exemple : Architecture en Couches
 ```plaintext
 +-------------------------+
