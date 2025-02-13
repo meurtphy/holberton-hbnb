@@ -27,6 +27,7 @@ Le UserService applique les règles métier (email unique, mdp sécurisé).
 Le UserService demande au UserRepository d'insérer les données.
 Le UserRepository sauvegarde les données et confirme.
 L'API retourne la réponse au Client.
+![Diagramme sans nom drawio (1)](https://github.com/user-attachments/assets/b9050aaf-51f7-4363-8d74-9941e1bdfc72)
 
 
 
