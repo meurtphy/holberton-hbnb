@@ -12,7 +12,8 @@ La Facade Pattern est utilisée pour simplifier la communication entre ces couch
 2️⃣ Représenter ces couches dans un diagramme de packages UML
 Le diagramme de packages sert à visualiser les différentes parties de l’application et leurs relations.
 ///////////////
-image[diagramme.de.packages.UML.1.pdf](https://github.com/user-attachments/files/18780154/diagramme.de.packages.UML.1.pdf)
+image ![diagramme_packages_1](https://github.com/user-attachments/assets/1289429e-8574-417c-9480-aa3cc86fd532)
+
 
 ////////////////////
 
