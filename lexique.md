@@ -30,7 +30,8 @@ Ce document constitue une référence technique pour guider les phases d'implém
 
 📊 2.1. Diagramme de Packages
 
-📌 Insérez ici votre diagramme de packages.
+![diagramme_packages_1](https://github.com/user-attachments/assets/a5794080-6db7-4d30-b37d-4b65d5dee46e)
+
 
 Explications des couches principales :
 
@@ -58,7 +59,9 @@ La base de données.
 
 📊 3.1. Diagramme de Classes
 
-📌 Insérez ici votre diagramme de classes.
+![diagramme_classes_1](https://github.com/user-attachments/assets/3dc948ec-7ad9-4c08-8218-a79871c66f73)
+
+
 
 Principales Entités et Relations :
 
@@ -93,8 +96,9 @@ Peut être associée à plusieurs Places (relation plusieurs-à-plusieurs).
 
 
 📊 4.1. Récupération d'une Liste de Lieux
+![DiagrammeFetching a List of Places drawio](https://github.com/user-attachments/assets/803026d1-6902-4c22-91a1-48f069978915)
 
-📌 Insérez ici votre diagramme de séquence (GET /api/places).
+
 
 Description du Flux :
 
@@ -120,17 +124,10 @@ Remarques :
 
 📊 4.2. Inscription d'un Utilisateur (Exemple en pseudo-Mermaid)
 
-sequenceDiagram
-    participant Client
-    participant API
-    participant UserService
-    participant UserRepository
-    Client->>API: POST /api/users (body: userData)
-    API->>UserService: registerUser(userData)
-    UserService->>UserRepository: save(user)
-    UserRepository-->>UserService: userSaved
-    UserService-->>API: createdUser
-    API-->>Client: 201 Created
+![DiagrammeUser Registration drawio](https://github.com/user-attachments/assets/47c927e7-cb15-491e-bf09-3ccd019d84af)
+
+![DiagrammePlace Creation drawio](https://github.com/user-attachments/assets/4ed27a07-37e2-4f2a-ab10-778a8081d9c4)
+![DiagrammeReview Submission drawio](https://github.com/user-attachments/assets/e225dfb1-c2af-4d22-9502-58c310d0119d)
 
 Étapes clés :
 
