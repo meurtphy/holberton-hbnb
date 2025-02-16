@@ -1,95 +1,151 @@
-Documentation Technique du Projet HBnB
-1. Introduction
-Contexte :
-HBnB est une application simplifiée de type AirBnB permettant à des utilisateurs de gérer des lieux (places), de laisser des avis (reviews), et de gérer les commodités (amenities). Le projet suit une architecture en couches (Presentation, Business Logic, Persistence), afin de séparer clairement les responsabilités et de faciliter la maintenance et l’évolutivité de l’application.
+📘 Documentation Technique du Projet HBnB
 
-Objectif du Document :
-Ce document fournit une vue d’ensemble de l’architecture et de la conception du système. Il sert de référence pour l’implémentation et inclut :
+🟡 1. Introduction
 
-Un diagramme de packages illustrant l’architecture haute-niveau.
-Un diagramme de classes décrivant la logique métier (Business Logic).
-Plusieurs diagrammes de séquence montrant comment les différentes couches interagissent pour répondre à des appels API précis.
-2. Architecture Haute-Niveau
-2.1. Diagramme de Packages
-(Si tu as déjà un diagramme de packages, insère-le ici. Sinon, voici un exemple générique en Mermaid.js)
+📝 Contexte
 
-inserez packtage ????????
+HBnB est une application simplifiée de type AirBnB, conçue pour permettre aux utilisateurs de gérer :
 
-PresentationLayer --> BusinessLogicLayer : utilise (Facade)
-BusinessLogicLayer --> PersistenceLayer : utilise (DAO/Repository)
-Explications :
+Des lieux (Places) : création, mise à jour, suppression et consultation.
 
-PresentationLayer : Gère l’interaction avec le client (front-end ou application externe). Ici, on y trouve l’API REST, les contrôleurs, etc.
-BusinessLogicLayer : Contient les règles métiers, les services et les modèles de domaine (User, Place, Review, Amenity).
-PersistenceLayer : Responsable de la persistance des données (accès à la base de données, requêtes CRUD, etc.).
-Le Facadé Pattern (ou façade) est utilisé pour exposer un point d’entrée unique depuis la couche Présentation vers la couche Business Logic, simplifiant ainsi l’interaction et masquant la complexité interne.
+Des avis (Reviews) : soumission, modification et suppression.
 
-(Si tu as déjà un diagramme de packages fourni dans tes captures, place-le et adapte les explications en fonction de tes noms de packages.)
+Des commodités (Amenities) : gestion des équipements associés aux lieux.
 
-3. Détail de la Logique Métier (Business Logic)
-3.1. Diagramme de Classes
-Voici un exemple de diagramme de classes basé sur les entités clés : User, Place, Review, Amenity. (Ton screenshot en montre un similaire, tu peux l’insérer directement.)
+L'application repose sur une architecture en couches (3-tier) :
 
-inserer diagramme de classe ?.?????
+Presentation Layer (Interface utilisateur et API)
 
-User 1..–0..n Place (un user peut posséder plusieurs places, une place est associée à un seul user propriétaire).
-Place 1..–0..n Review (une place peut avoir plusieurs reviews, une review est associée à une place).
-User 1..–0..n Review (un user peut poster plusieurs reviews, une review appartient à un seul user).
-Place 0..n–0..n Amenity (relation plusieurs-à-plusieurs : un lieu peut avoir plusieurs commodités, et une commodité peut appartenir à plusieurs lieux).
-(Adapte les relations et la cardinalité selon ton besoin exact.)
+Business Logic Layer (Règles métiers et services)
 
-4. Diagrammes de Séquence (API Interaction Flow)
-Selon les consignes, il est recommandé de présenter quatre diagrammes de séquence pour les appels API majeurs :
+Persistence Layer (Stockage et gestion des données)
 
-Inscription d’un utilisateur
-Création d’un lieu (Place)
-Soumission d’une review
-Récupération d’une liste de lieux (Places)
-Tu as déjà fourni un diagramme de séquence pour la récupération d’une liste de places (GET /api/places?price=100&city=Paris). Ci-dessous, je l’intègre et je commente.
-(Les 3 autres diagrammes peuvent être construits sur le même modèle.)
+Cette approche modulaire facilite la maintenance, l'évolutivité et la réutilisation des composants.
 
-4.1. Récupération d’une liste de places
+🎯 Objectif du Document
 
-inserer les 4????????????
+Ce document constitue une référence technique pour guider les phases d'implémentation. Il contient :✅ Un diagramme de packages présentant l'architecture globale (haute-niveau).✅ Un diagramme de classes décrivant la couche métier et les relations entre les entités principales.✅ Des diagrammes de séquence illustrant les interactions entre les couches pour différents appels API.
 
-Description du flux :
+🟠 2. Architecture Haute-Niveau (Diagramme de Packages)
 
-Client envoie une requête GET sur /api/places?price=100&city=Paris.
-API reçoit la requête et appelle la méthode getPlaces(filters) de la couche Service (ici, PlaceService).
-PlaceService traite la logique métier, formate les filtres, et appelle fetchPlaces(filters) sur le PlaceRepository (couche Persistance).
-PlaceRepository interroge la base de données et retourne la liste des places correspondantes.
-PlaceService reçoit cette liste, applique éventuellement une dernière logique (tri, vérification, etc.), et la renvoie à l’API.
-API envoie la réponse 200 OK au Client avec la liste des places.
+📊 2.1. Diagramme de Packages
+
+📌 Insérez ici votre diagramme de packages.
+
+Explications des couches principales :
+
+PresentationLayer :Gère l'interaction avec les utilisateurs (front-end, API REST). Cette couche contient :
+
+Les API Controllers (points d'entrée des requêtes)
+
+Les Services exposés via l'API.
+
+BusinessLogicLayer :Responsable de l'application des règles métiers. Elle contient :
+
+Les entités principales (User, Place, Review, Amenity)
+
+Les services métiers (UserService, PlaceService, ReviewService, AmenityService)
+
+PersistenceLayer :Gère la sauvegarde et la récupération des données. Elle contient :
+
+Les DAO (Data Access Objects) pour chaque entité.
+
+La base de données.
+
+🧩 Pattern utilisé :Le Facade Pattern est appliqué pour simplifier les interactions entre la couche Présentation et la couche Business Logic. Cette approche permet de masquer la complexité interne et de centraliser les points d'entrée.
+
+🟢 3. Détail de la Logique Métier (Diagramme de Classes)
+
+📊 3.1. Diagramme de Classes
+
+📌 Insérez ici votre diagramme de classes.
+
+Principales Entités et Relations :
+
+User
+
+Possède plusieurs Places (1 utilisateur → plusieurs lieux).
+
+Peut laisser plusieurs Reviews (1 utilisateur → plusieurs avis).
+
+Place
+
+Appartient à un seul User (propriétaire).
+
+Possède plusieurs Reviews (1 lieu → plusieurs avis).
+
+Possède plusieurs Amenities (relation plusieurs-à-plusieurs).
+
+Review
+
+Appartient à un User et concerne un Place.
+
+Amenity
+
+Peut être associée à plusieurs Places (relation plusieurs-à-plusieurs).
+
+✅ Pattern clé utilisé : L'association Place - Amenity utilise une relation Many-to-Many via une table de liaison.
+
+🟤 4. Diagrammes de Séquence (API Interaction Flow)
+
+📌 Diagrammes attendus :
+
+
+
+📊 4.1. Récupération d'une Liste de Lieux
+
+📌 Insérez ici votre diagramme de séquence (GET /api/places).
+
+Description du Flux :
+
+Client : Envoie une requête GET avec des filtres (ex. /api/places?price=100&city=Paris).
+
+API : Reçoit la requête et appelle getPlaces(filters) de PlaceService.
+
+PlaceService : Traite les filtres et appelle fetchPlaces(filters) de PlaceRepository.
+
+PlaceRepository : Interroge la base de données et retourne la liste des lieux.
+
+PlaceService : Traite les résultats (ex. trie, pagine) et renvoie la liste à l'API.
+
+API : Envoie une réponse 200 OK avec la liste des lieux au Client.
+
 Remarques :
 
-Le diagramme montre clairement la séparation entre API, Service et Repository.
-Les flèches à sens unique indiquent les appels de méthodes ou de fonctions.
-Les retours (messages en pointillés) indiquent la réponse ou la valeur de retour.
-4.2. Exemple : Inscription d’un Utilisateur
-(Exemple en pseudo-Mermaid si tu veux un squelette)
+✅ Les flèches pleines indiquent des appels de méthode.
 
+✅ Les flèches pointillées indiquent les réponses.
 
-Idée de description :
+✅ Le Service centralise la logique métier (applique des filtres, formats, etc.).
 
-Le Client envoie une requête POST avec les informations d’utilisateur (email, password, etc.).
-L’API valide le format et appelle registerUser(userData) sur la couche Service (UserService).
-UserService applique les règles métiers (hash du mot de passe, validations, etc.) puis enregistre le nouvel utilisateur en base via UserRepository.
-Le UserRepository renvoie l’objet utilisateur créé.
-UserService le renvoie à l’API, qui envoie la réponse 201 Created au Client.
-4.3. Exemple : Création d’un Lieu (Place)
-(Même principe : Client -> API -> PlaceService -> PlaceRepository -> etc.)
+📊 4.2. Inscription d'un Utilisateur (Exemple en pseudo-Mermaid)
 
-4.4. Exemple : Soumission d’une Review
-(Même principe : Client -> API -> ReviewService -> ReviewRepository -> etc.)
+sequenceDiagram
+    participant Client
+    participant API
+    participant UserService
+    participant UserRepository
+    Client->>API: POST /api/users (body: userData)
+    API->>UserService: registerUser(userData)
+    UserService->>UserRepository: save(user)
+    UserRepository-->>UserService: userSaved
+    UserService-->>API: createdUser
+    API-->>Client: 201 Created
 
-5. Conclusion
-Dans ce document, nous avons présenté :
+Étapes clés :
 
-L’architecture en couches du projet HBnB et la logique d’interaction via un facade pattern.
-Le diagramme de classes décrivant les entités principales (User, Place, Review, Amenity) et leurs relations.
-Les diagrammes de séquence illustrant comment le client interagit avec l’API et comment les couches s’échangent des informations.
-Perspectives :
+Client : Envoie les informations (email, mot de passe) via l'API.
 
-Ce document servira de référence tout au long du développement.
-Il pourra être mis à jour à mesure que l’application évolue (nouvelles fonctionnalités, refactorisations, etc.).
-Il est essentiel de maintenir la cohérence entre la documentation et le code pour éviter toute divergence et faciliter la maintenance
+UserService : Valide, hash le mot de passe, enregistre l'utilisateur.
+
+UserRepository : Effectue l'insertion dans la base.
+
+API : Retourne la confirmation (201 Created).
+
+🟣 5. Conclusion
+
+📝 Synthèse : Ce document a exposé l'architecture, les entités principales et le flux des appels API.
+
+🔄 Mises à jour : Ce document évoluera selon l'ajout de nouvelles fonctionnalités.
+
+🛡️ Bonnes pratiques : Maintenir la cohérence avec le code et suivre les principes SOLID.
